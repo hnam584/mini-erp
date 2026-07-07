@@ -1,0 +1,62 @@
+### Health check
+GET http://localhost:5000/api/health
+
+### Get all products
+GET http://localhost:5000/api/products
+
+### Create product - Coca Cola
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Coca Cola",
+  "sku": "CC002",
+  "category": "Đồ uống",
+  "costPrice": 8000,
+  "sellPrice": 12000,
+  "stock": 50
+}
+
+### Create product - Pepsi
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Pepsi",
+  "sku": "PEPSI001",
+  "category": "Đồ uống",
+  "costPrice": 7500,
+  "sellPrice": 11000,
+  "stock": 30
+}
+
+### Update product (nhớ thay :id bằng _id thật lấy từ Get all products)
+PUT http://localhost:5000/api/products/6a4c6bf44eab2be97442f1e1
+Content-Type: application/json
+
+{
+  "sellPrice": 13000
+}
+
+### Delete product (nhớ thay :id bằng _id thật)
+DELETE http://localhost:5000/api/products/PASTE_ID_VAO_DAY
+
+### Stock in (nhớ thay productId bằng _id thật)
+POST http://localhost:5000/api/products/stock-in
+Content-Type: application/json
+
+{
+  "productId": "6a4c6bf44eab2be97442f1e1",
+  "quantity": 20,
+  "reason": "Nhập thêm từ NCC A"
+}
+
+### Stock in - test lỗi (product không tồn tại)
+POST http://localhost:5000/api/products/stock-in
+Content-Type: application/json
+
+{
+  "productId": "6a4c6bf44eab2be97442f1e1",
+  "quantity": 10,
+  "reason": "Test not found"
+}
