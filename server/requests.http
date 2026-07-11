@@ -56,7 +56,35 @@ POST http://localhost:5000/api/products/stock-in
 Content-Type: application/json
 
 {
-  "productId": "6a4c6bf44eab2be97442f1e1",
+  "productId": "000000000000000000000000",
   "quantity": 10,
   "reason": "Test not found"
+}
+
+### Create order
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "items": [
+    { "productId": "6a4c6fa88cb96eaa696e347d", "quantity": 2 }
+  ],
+  "createdBy": "000000000000000000000001"
+}
+
+### Get all orders
+GET http://localhost:5000/api/orders
+
+### Get order detail
+GET http://localhost:5000/api/orders/6a521817cca1a9e2d60c9ee2
+
+### Test insufficient stock
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "items": [
+    { "productId": "6a4c6fa88cb96eaa696e347d", "quantity": 99999 }
+  ],
+  "createdBy": "000000000000000000000001"
 }
